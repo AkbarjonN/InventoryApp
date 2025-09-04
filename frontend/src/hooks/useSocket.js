@@ -5,7 +5,10 @@ export function useSocket() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const s = io("https://inventoryapp-7qmg.onrender.com", { transports: ["websocket"] });
+    const s = io(import.meta.env.VITE_SOCKET_URL, {
+      transports: ["websocket"],
+      withCredentials: true,
+    });
     setSocket(s);
 
     return () => {
@@ -15,3 +18,4 @@ export function useSocket() {
 
   return socket;
 }
+
