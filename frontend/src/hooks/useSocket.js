@@ -5,7 +5,7 @@ export function useSocket() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const s = io("http://localhost:5000", { transports: ["websocket"] });
+    const s = io("https://inventoryapp-7qmg.onrender.com", { transports: ["websocket"] });
     setSocket(s);
 
     return () => {

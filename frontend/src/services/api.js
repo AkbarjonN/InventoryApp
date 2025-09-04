@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api"; // backend URL
+const API_URL = "https://inventoryapp-7qmg.onrender.com"; // backend URL
 
 const api = axios.create({
   baseURL: API_URL,
