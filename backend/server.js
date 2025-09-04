@@ -17,7 +17,10 @@ import adminRoutes from "./routes/adminRoutes.js";
 dotenv.config();
 const app = express();
 const httpServer = createServer(app);
-
+const allowedOrigins = [
+  "http://localhost:5173",                        
+  "https://inventory-app-eight-psi.vercel.app"   
+];
 const io = new Server(httpServer, {
   cors: {
     origin: "https://inventory-app-eight-psi.vercel.app/",
@@ -31,7 +34,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cors({
-  origin: "",
+  origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
