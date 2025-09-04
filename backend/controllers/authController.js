@@ -22,7 +22,7 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: "Username or Email already exists" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);n
+    const hashedPassword = await bcrypt.hash(password, 10);
     const userCount = await User.count();
     const role = userCount === 0 ? "admin" : "creator";
 
