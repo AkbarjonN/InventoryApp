@@ -1,0 +1,15 @@
+html.dark, body.dark {
+    background: #121212;
+    color: #eaeaea;
+  }
+  .navbar-dark .navbar-brand, .navbar-dark .nav-link { color: #fff !important; }
+  .table thead th { white-space: nowrap; }
+  .toolbar {
+    display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;
+  }
+  .badge-tag {
+    margin: 2px; padding: .35rem .5rem; border-radius: .5rem;
+    background: rgba(0,0,0,.075);
+  }
+  body.dark .badge-tag { background: rgba(255,255,255,.15); }
+  
