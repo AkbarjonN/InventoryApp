@@ -26,7 +26,7 @@ const allowedOrigins = [
 ];
 const io = new Server(httpServer, {
   cors: {
-    origin: "https://inventory-app-eight-psi.vercel.app/",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials:true
   },
