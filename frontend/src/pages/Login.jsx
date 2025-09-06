@@ -47,8 +47,8 @@ export default function Login() {
       <p className="mt-2">
         No account? <Link to="/register">Register</Link>
       </p>
-      <button onClick={handleGoogle}>Continue with Google</button>
-      <button onClick={handleGitHub}>Continue with GitHub</button>
+      <button onClick={handleGoogle} className="btn btn-danger w-100 mt-2">Continue with Google</button>
+      <button onClick={handleGitHub} className="btn btn-dark w-100 mt-2">Continue with GitHub</button>
     </div>
   );
 }
