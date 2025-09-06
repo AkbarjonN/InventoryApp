@@ -1,13 +1,21 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { Link, useNavigate } from "react-router-dom";
-
+import api from "../api";
+const BACKEND_URL = import.meta.env.VITE_API_URL;
 export default function Login() {
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const nav = useNavigate();
-
+  // google
+  const handleGoogle = () => {  
+    window.location.href = `${BACKEND_URL}/api/auth/google`;
+  };
+  // github
+  const handleGitHub = () => {
+    window.location.href = `${BACKEND_URL}/api/auth/github`;
+  };
   const submit = async (e) => {
     e.preventDefault();
     await login(email, password);
@@ -39,6 +47,8 @@ export default function Login() {
       <p className="mt-2">
         No account? <Link to="/register">Register</Link>
       </p>
+      <button onClick={handleGoogle}>Continue with Google</button>
+      <button onClick={handleGitHub}>Continue with GitHub</button>
     </div>
   );
 }

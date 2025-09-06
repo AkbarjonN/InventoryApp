@@ -5,6 +5,9 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import sequelize from "./config/db.js";
 import initModels from "./models/initModels.js";
+import passport from "passport";
+import { setupPassport } from "./config/passport.js";
+import session from "express-session";
 
 import authRoutes from "./routes/authRoutes.js";
 import inventoryRoutes from "./routes/inventoryRoutes.js";
@@ -45,6 +48,20 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+
+// ✅ Passport session ishlashi uchun session qo‘shamiz
+app.use(session({
+  secret: process.env.JWT_SECRET || "secret", // JWT_SECRET dan olamiz
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Render HTTPS bo‘lsa secure:true qilamiz
+}));
+
+// ✅ Passportni ishga tushirish
+app.use(passport.initialize());
+app.use(passport.session());
+setupPassport(passport); // Google & GitHub strategy config
+
 const models = initModels(sequelize);
 app.use((req, res, next) => {
   req.models = models;

@@ -6,6 +6,7 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Home from "./pages/Home.jsx";
 import Inventory from "./pages/Inventory.jsx";
+import AuthCallback from "./pages/AuthCallback";
 import { AuthContext } from "./context/AuthContext.jsx";
 import UsersList from "./components/UsersList";
 function PrivateRoute({ children }) {
@@ -52,6 +53,7 @@ export default function App() {
               </PublicOnly>
             }
           />
+          <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/admin/users" element={<UsersList />} />
         </Routes>

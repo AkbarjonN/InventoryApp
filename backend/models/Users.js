@@ -14,6 +14,10 @@ export default (sequelize) => {
         type: DataTypes.ENUM("admin", "creator", "editor", "viewer"),
         defaultValue: "creator", 
       },
+          // << NEW for OAuth >>
+          provider: { type: DataTypes.STRING },        
+          providerId: { type: DataTypes.STRING },        
+          avatar: { type: DataTypes.STRING },  
     },
     {
       sequelize,
