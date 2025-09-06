@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
-const BACKEND_URL = import.meta.env.VITE_API_URL;
+const BACKEND_URL = import.meta.env.VITE_SERVER_URL;
 export default function Login() {
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
@@ -47,8 +47,8 @@ export default function Login() {
       <p className="mt-2">
         No account? <Link to="/register">Register</Link>
       </p>
-      <button onClick={handleGoogle} className="btn btn-danger w-100 mt-2">Continue with Google</button>
-      <button onClick={handleGitHub} className="btn btn-dark w-100 mt-2">Continue with GitHub</button>
+      <button onClick={handleGoogle} className="btn btn-danger w-100 mt-2"><i className="bi bi-google me-2"></i> Continue with Google</button>
+      <button onClick={handleGitHub} className="btn btn-dark w-100 mt-2"> <i className="bi bi-github me-2"></i> Continue with GitHub</button>
     </div>
   );
 }
