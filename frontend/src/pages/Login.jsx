@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../api";
+import api from "../services/api.js";
 const BACKEND_URL = import.meta.env.VITE_SERVER_URL;
 export default function Login() {
   const { login } = useContext(AuthContext);
