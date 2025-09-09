@@ -1,4 +1,3 @@
-// src/pages/AuthCallback.jsx
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,6 @@ export default function AuthCallback() {
     const token = params.get("token");
     if (token) {
       localStorage.setItem("token", token);
-      // Agar axios interceptor ishlatsangiz shu yerda sozlang yoki global joyda
       nav("/", { replace: true });
     } else {
       nav("/login?err=oauth", { replace: true });

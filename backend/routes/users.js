@@ -1,6 +1,6 @@
 
 import express from "express";
-import sequelize from "../config/db.js";  // ✅ DB connection
+import sequelize from "../config/db.js";  
 import initModels from "../models/initModels.js";
 import { authenticate, requireRole } from "../middleware/authMiddleware.js";
 const router = express.Router();

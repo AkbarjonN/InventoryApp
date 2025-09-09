@@ -15,7 +15,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem("token");
-      window.location.href = "/login"; // avtomatik logout
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   }
@@ -36,9 +36,12 @@ export const inventories = {
 
 export const items = {
   list: (inventoryId) => api.get(`/inventories/${inventoryId}/items`),
-  create: (inventoryId, data) => api.post(`/inventories/${inventoryId}/items`, data),
-  update: (inventoryId, itemId, data) => api.put(`/inventories/${inventoryId}/items/${itemId}`, data),
-  delete: (inventoryId, itemId) => api.delete(`/inventories/${inventoryId}/items/${itemId}`),
+  create: (inventoryId, data) =>
+    api.post(`/inventories/${inventoryId}/items`, data),
+  update: (inventoryId, itemId, data) =>
+    api.put(`/inventories/${inventoryId}/items/${itemId}`, data),
+  delete: (inventoryId, itemId) =>
+    api.delete(`/inventories/${inventoryId}/items/${itemId}`),
 };
 
 export const posts = {
@@ -56,6 +59,6 @@ export const tags = {
 };
 
 export default api;
-export const getUsers = () => api.get("/auth/users"); 
+export const getUsers = () => api.get("/auth/users");
 export const updateUserRole = (userId, newRole) =>
   api.put("/auth/update-role", { userId, newRole });

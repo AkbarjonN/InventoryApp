@@ -10,7 +10,6 @@ const FRONTEND_URL = process.env.FRONTEND_URL;
 const SERVER_URL = process.env.SERVER_URL;
 
 export function setupPassport() {
-  // GOOGLE
   passport.use(
     new GoogleStrategy(
       {
@@ -28,7 +27,6 @@ export function setupPassport() {
           let user = await User.findOne({ where: { provider: "google", providerId } });
 
           if (!user && email) {
-            // email bilan mavjud bo‘lsa, provider maydonlarini bog‘lab qo‘yamiz
             user = await User.findOne({ where: { email } });
           }
 
@@ -44,7 +42,6 @@ export function setupPassport() {
               password: null,
             });
           } else {
-            // mavjud foydalanuvchini yangilash (agar kerak bo‘lsa)
             if (!user.provider) user.provider = "google";
             if (!user.providerId) user.providerId = providerId;
             if (!user.avatar && avatar) user.avatar = avatar;
@@ -59,7 +56,6 @@ export function setupPassport() {
     )
   );
 
-  // GITHUB
   passport.use(
     new GitHubStrategy(
       {
@@ -71,7 +67,7 @@ export function setupPassport() {
       async (accessToken, refreshToken, profile, done) => {
         try {
           const emails = profile.emails || [];
-          const email = emails[0]?.value; // GitHub’da email private bo‘lishi mumkin!
+          const email = emails[0]?.value; 
           const username = profile.username || email?.split("@")[0] || `gh_${profile.id}`;
           const providerId = profile.id;
           const avatar = profile.photos?.[0]?.value;

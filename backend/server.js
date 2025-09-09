@@ -49,18 +49,17 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// ✅ Passport session ishlashi uchun session qo‘shamiz
+
 app.use(session({
-  secret: process.env.JWT_SECRET || "secret", // JWT_SECRET dan olamiz
+  secret: process.env.JWT_SECRET || "inventory_key", 
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false } // Render HTTPS bo‘lsa secure:true qilamiz
+  cookie: { secure: false } 
 }));
 
-// ✅ Passportni ishga tushirish
 app.use(passport.initialize());
 app.use(passport.session());
-setupPassport(passport); // Google & GitHub strategy config
+setupPassport(passport); 
 
 const models = initModels(sequelize);
 app.use((req, res, next) => {

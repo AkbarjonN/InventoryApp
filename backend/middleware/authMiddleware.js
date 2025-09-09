@@ -35,7 +35,7 @@ export const authenticate = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "secretkey");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "inventory_key");
     req.user = decoded;
     next();
   } catch (err) {

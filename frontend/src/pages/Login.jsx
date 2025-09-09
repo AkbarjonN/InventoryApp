@@ -8,11 +8,9 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const nav = useNavigate();
-  // google
   const handleGoogle = () => {  
     window.location.href = `${BACKEND_URL}/api/auth/google`;
   };
-  // github
   const handleGitHub = () => {
     window.location.href = `${BACKEND_URL}/api/auth/github`;
   };

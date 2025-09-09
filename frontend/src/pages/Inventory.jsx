@@ -456,10 +456,7 @@ export default function Inventory() {
 
       {tab === "access" && canOwner && (
         <div>
-          <p>
-            Access management (add/remove users by email, sorted by name/email,
-            autocomplete) — backend endpointlariga mos ravishda ulab qo‘ying.
-          </p>
+          
         </div>
       )}
     </div>
